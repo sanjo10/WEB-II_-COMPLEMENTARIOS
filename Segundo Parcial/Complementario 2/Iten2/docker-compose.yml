@@ -1,0 +1,27 @@
+# COLOCAR  LA VERSIÓN DEL ARCHIVO DE CONFIGURACIÓN
+version: "3"
+ #CREE DOS SERVICICIOS UN API Y LA BASE DE DATOS
+services:
+    # DEFINI LA IMAGEN DEL DOCKERFILE
+    api:
+        build: .
+        # COLOQUE LA DEPENDECIA LAS DEPENDECIAS LA CUAL EN ESTE CASO MONGO
+        depends_on: 
+            - mongo
+            #COLOQUE LA VARIABLES DEL ENTORNO 
+        environment: 
+            #DEFINI EL PUERTO
+            - PORT=3000
+            #COLOQUE LA CADENA EN LA BASE DE DATOS DE MONGO
+            - MONGO_URI=mongodb://mongo:27017/myFirstDatabase
+            #DEFINI EL PUERTO DE SALIDA
+        ports: 
+            - "3000:3000"
+            #DEFINI LA IMAGEN DE MONGO
+
+    mongo:
+        image: mongo
+        
+
+
+
